@@ -10,20 +10,22 @@ import { appendMovies, clearMovies, setMessage } from "./ui";
         const searchTerm = document.getElementById("search-pane-input").value;
          // before each search, clear the movies
          clearMovies();
-        //  
-         setMessage('searching for movies, please wait...')
+         setMessage('searching for movies, please wait...');
          
         search(searchTerm)
             .then((response) => {
                 // check if the API's response property is 'true'
-                if (response.Response === 'True') {
+                if (response.Response === 'True') 
+                    // clear search message
+                    setMessage('');
+
                     // if true, retrieve the results, append the movies from the API's response search property
-                    appendMovies(response.Search)
-                    // setMessage();
+                    appendMovies(response.Search);
+                    
                     // otherwise, somehow, communicate that there's an error
                 }   else {
                     // set custom error message for none yielding results
-                    setMessage('could not find any matches, please refine your search term')
+                    setMessage('could not find any matches, please refine your search term.......')
                 }
             })
             // create functiont to catch unexpected errors
