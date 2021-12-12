@@ -1,0 +1,31 @@
+#search-pane {
+    margin: 1em;
+    text-align: center;
+}
+
+#search-results {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+/* style for search results */
+.search-results-item {
+    /* set width */
+    width: 300px;
+    /* align text to center */
+    text-align: center;
+    /* if text-string is longer than set width...hide it */
+    text-overflow: ellipsis;
+}
+
+/* style for each poster */
+.search-results-item-poster {
+    /* set width of poster img (ie. aspect ratio for poster from this API is 2-to-3  */
+    width: 200px;
+    height: 300px;
+};
