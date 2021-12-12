@@ -13,9 +13,9 @@ export const clearMovies = () => {
   };
 
 
-//   helper func to create list item
+//   helper function to create list item
 const createListItem = (title, year, poster) => {
-    // caption of image
+    // create constant to hold the caption of the image
     const caption = `${year}, ${title}`;
 
     // create element for the img above
