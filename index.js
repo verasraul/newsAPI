@@ -2,26 +2,27 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { search } from "./api";
-import { appendMovies, clearMovies, setMessage } from "./ui";
-// import { appendMovies, clearMovies, setMessage } from "./ui";import { appendMovies, clearMovies, setMessage } from "./ui";
+import { appendArticles, clearArticles, setMessage } from "./ui";
+// import { appendArticles, clearMovies, setMessage } from "./ui";import { appendArticles, clearMovies, setMessage } from "./ui";
 
 
 (() => {
     const handleSearchButtonClick = () => {
         const searchTerm = document.getElementById("search-pane-input").value;
-         // before each search, clear the movies
-         clearMovies();
+         // before each search, clear the headlines
+         clearArticles();
         //  set a search message to display
-         setMessage('searching for movies, please wait...')
+         setMessage('searching for head lines, please wait...')
          
         search(searchTerm)
             .then((response) => {
+                console.log(response);
                 // check if the API's response property is 'true'
-                if (response.Response === 'True') {
+                if (response.status === 'ok') {
                     // clear search message
                     setMessage();
                     // if true, retrieve the results, append the movies from the API's response search property
-                    appendMovies(response.Search)
+                    appendArticles(response.articles)
                     
                     // otherwise, communicate that there's an error
                 }   else {

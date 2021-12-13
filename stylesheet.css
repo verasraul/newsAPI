@@ -24,8 +24,8 @@
 }
 
 /* style for each poster */
-.search-results-item-poster {
+.search-results-item-urlToImage {
     /* set width of poster img (ie. aspect ratio for poster from this API is 2-to-3  */
-    width: 200px;
-    height: 300px;
+    width: 20%;
+    height: 100%;
 };

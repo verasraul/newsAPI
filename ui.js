@@ -1,9 +1,9 @@
-// create a function to displace a standard img when movie titles don't retrieve poster imgs
-  const FALLBACK_POSTER_URL = "https://thumbs.dreamstime.com/b/movie-film-company-logo-design-vector-template-movie-film-company-logo-design-inspiration-vector-template-167661473.jpg";
+// create a function to displace a standard img when headLine titles don't retrieve urlToImage imgs
+  const FALLBACK_POSTER_URL = "https://thumbs.dreamstime.com/b/headLine-film-company-logo-design-vector-template-headLine-film-company-logo-design-inspiration-vector-template-167661473.jpg";
 
 //   function that clears the results 
     // no argument function
-export const clearMovies = () => {
+export const clearArticles = () => {
     //   reference from the list
       const list = document.getElementById("search-results");
       // remove child from list
@@ -14,27 +14,27 @@ export const clearMovies = () => {
 
 
 //   helper function to create list item
-const createListItem = (title, year, poster) => {
+const createListItem = (title, author, urlToImage) => {
     // create constant to hold the caption of the image
-    const caption = `${year}, ${title}`;
+    const caption = `${author}, ${title}`;
 
-    // create element for the img above
+    // create element for the img
     const captionNode = document.createElement("figcaption");
         // append text tool child to the element of the caption
         captionNode.appendChild(document.createTextNode(caption));
 
-    // element for poster image
+    // element for article image
     const posterNode = document.createElement('img');
         // alternative text tool child for img element
         posterNode.setAttribute('alt', caption);
         // class to style img element
-        posterNode.setAttribute('class', 'search-results-item-poster');
-        // set the source attritube to add the poster url
-        posterNode.setAttribute('src', poster); 
+        posterNode.setAttribute('class', 'search-results-item-urlToImage');
+        // set the source attritube to add the urlToImage url
+        posterNode.setAttribute('src', urlToImage); 
 
     // assemble/create figure node
     const figureNode = document.createElement('figure');
-        // append the poster node to figure
+        // append the urlToImage node to figure
         figureNode.appendChild(posterNode);
         // append the caption node to figure
         figureNode.appendChild(captionNode);
@@ -50,17 +50,17 @@ const createListItem = (title, year, poster) => {
 };
 
 
-// create a function that accepts movies array as an argument
-export const appendMovies = (movies) => {
+// create a function that accepts Articles array as an argument
+export const appendArticles = (articles) => {
     // for each element grab the referenced list
     const list = document.getElementById("search-results");
 
-    // iterate through array & for each movie, create a list item node
-    movies.forEach((movie) => { 
-      // creat function to display fallback img when movie titles don't retrieve post imgs
-      const moviePoster = movie.Poster && movie.Poster != 'N/A' ?  movie.Poster : FALLBACK_POSTER_URL;
+    // iterate through array & for each headLine, create a list item node
+    articles.forEach((headLine) => { 
+      // creat function to display fallback img when headLine titles don't retrieve post imgs
+      // const headLinePoster = headLine.urlToImage && headLine.urlToImage != 'null' ?  headLine.urlToImage : FALLBACK_POSTER_URL;
       // create list-item-nodes passing keys/items from objects in JSON array (ie. response you get from API requests)
-      const listItemNode = createListItem(movie.Title, movie.Year, moviePoster);
+      const listItemNode = createListItem(headLine.author, headLine.title, headLine.urlToImage);
         // append list items for each element
         list.appendChild(listItemNode);
     });
