@@ -1,0 +1,3 @@
+https://newsapi.org/v2/everything
+
+https://newsapi.org/top-headlines?country=us
